@@ -1,0 +1,96 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "motion"
+version = "0.1.0"
+description = "Seamless object-merge motion: segment, localize, and morph two (eventually N) objects into one continuous transition."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Cindy" }]
+
+# ---------------------------------------------------------------------------
+# CORE dependencies (CPU-only). These install everywhere — Mac mini included —
+# and are enough to run the full render/morph pipeline. NOTHING here pulls in
+# torch, CUDA, or any GPU-only package. Keep it that way.
+# ---------------------------------------------------------------------------
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python-headless>=4.9",   # warpAffine, Subdiv2D, DISOpticalFlow — no GUI/Qt deps
+    "imageio>=2.34",
+    "imageio-ffmpeg>=0.4.9",         # bundles an ffmpeg for video muxing
+    "pillow>=10.0",
+    "pydantic>=2.6",                 # the AE/JSON manifest contract
+    "pyyaml>=6.0",
+    "typer>=0.12",                   # `motion ...` CLI
+    "rich>=13.7",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+# GPU inference (SAM 3 + LocateAnything in PyTorch). Install on the GPU box.
+# SAM 3 itself is installed from its git repo by scripts/setup_gpu.sh because it
+# ships as an editable package with gated checkpoints — see docs/GPU_SETUP.md.
+gpu = [
+    "torch>=2.7",
+    "torchvision",
+    "transformers>=4.44",
+    "accelerate>=0.30",
+    "safetensors>=0.4",
+    "huggingface-hub>=0.24",
+    "einops>=0.7",
+]
+
+# Fine-tuning stack (adds trainers, PEFT/LoRA, experiment tracking).
+train = [
+    "motion[gpu]",
+    "peft>=0.11",
+    "datasets>=2.19",
+    "bitsandbytes>=0.43; platform_system == 'Linux'",
+    "wandb>=0.17",
+    "tensorboard>=2.16",
+]
+
+# Data engine (scraping/curating existing "motion" media for fine-tuning).
+data = [
+    "yt-dlp>=2024.4",
+    "scipy>=1.11",                   # optional: nicer correspondence / matching
+    "scikit-image>=0.22",
+]
+
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+all = ["motion[gpu,train,data,dev]"]
+
+[project.scripts]
+motion = "motion.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/motion"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Typer's API *requires* calling Option()/Argument() in parameter defaults.
+"src/motion/cli.py" = ["B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

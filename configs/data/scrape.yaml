@@ -1,0 +1,8 @@
+# Collect existing "motion" media to fine-tune on.
+# ⚠️ Only list sources you have the right to download and train on. See scrape.py.
+sources:
+  # - https://example.com/some-morph-compilation
+  - configs/data/sources.example.txt   # newline-delimited URL file (edit me)
+out_dir: data/raw
+format: "bestvideo[height<=1080]+bestaudio/best[height<=1080]"
+limit: null

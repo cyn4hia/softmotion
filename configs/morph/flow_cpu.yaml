@@ -1,0 +1,9 @@
+# Mask-free optical-flow morph (no segmentation needed).
+backend: flow
+n_frames: 48
+fps: 30
+easing: ease_in_out
+max_side: 1024
+device: ${MOTION_DEVICE:auto}
+allow_grabcut: false
+write_frames: false

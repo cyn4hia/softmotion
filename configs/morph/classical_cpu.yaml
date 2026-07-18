@@ -1,0 +1,10 @@
+# Default render settings (mesh-warp morph). Load into MergeConfig.
+backend: classical        # auto | classical | flow
+n_frames: 48
+fps: 30
+easing: ease_in_out       # linear | ease_in | ease_out | ease_in_out
+max_side: 1024            # downscale longest side for speed (0 = off)
+device: ${MOTION_DEVICE:auto}
+n_contour: 64
+allow_grabcut: true
+write_frames: false       # true → also emit PNG sequence for After Effects

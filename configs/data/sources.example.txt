@@ -1,0 +1,3 @@
+# One source URL per line. Lines starting with '#' are ignored.
+# Populate with content you are permitted to use for training.
+# https://www.youtube.com/watch?v=EXAMPLE

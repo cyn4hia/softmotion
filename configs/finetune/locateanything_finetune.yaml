@@ -1,0 +1,24 @@
+# LoRA fine-tune LocateAnything-3B. Run on the GPU box: motion finetune locateanything --config <this>
+model_id: nvidia/LocateAnything-3B
+dataset_jsonl: data/datasets/la_train.jsonl   # built by motion.data.dataset_la.build_la_dataset
+output_dir: checkpoints/locateanything-ft
+
+epochs: 3.0
+lr: 1.0e-4
+batch_size: 1
+grad_accum: 8
+
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_targets: ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+max_seq_len: 2048
+bf16: true
+gradient_checkpointing: true
+warmup_ratio: 0.03
+save_steps: 200
+logging_steps: 10
+report_to: tensorboard      # tensorboard | wandb | none
+
+smoke_steps: 10             # ⚠️ FIRST RUN: set >0 to validate the pipeline, then set 0

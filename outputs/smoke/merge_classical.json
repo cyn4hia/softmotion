@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "created_utc": "2026-07-18T05:09:28.062218+00:00",
+  "device": "cpu",
+  "fps": 24,
+  "size": [
+    256,
+    256
+  ],
+  "objects": [
+    {
+      "image": "/Users/cyn/coding/motion/outputs/smoke/a.png",
+      "prompt": null,
+      "mask": "/Users/cyn/coding/motion/outputs/smoke/mask_a.png"
+    },
+    {
+      "image": "/Users/cyn/coding/motion/outputs/smoke/b.png",
+      "prompt": null,
+      "mask": "/Users/cyn/coding/motion/outputs/smoke/mask_b.png"
+    }
+  ],
+  "detections": [
+    {
+      "object_index": 0,
+      "source": "user",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": null,
+      "mask_path": null
+    },
+    {
+      "object_index": 1,
+      "source": "user",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": null,
+      "mask_path": null
+    }
+  ],
+  "segments": [
+    {
+      "from_index": 0,
+      "to_index": 1,
+      "backend": "classical",
+      "n_frames": 24,
+      "easing": "ease_in_out",
+      "start_frame": 0,
+      "frames_dir": null
+    }
+  ],
+  "output_video": "/Users/cyn/coding/motion/outputs/smoke/merge_classical.mp4",
+  "total_frames": 24,
+  "notes": [
+    "morph backend policy: classical"
+  ]
+}

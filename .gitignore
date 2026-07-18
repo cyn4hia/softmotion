@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Heavy / generated artifacts — never commit these. Structure is created by
+# scripts/bootstrap_dirs.py and documented in docs/ARCHITECTURE.md.
+# ---------------------------------------------------------------------------
+checkpoints/          # base + fine-tuned model weights (SAM3, LocateAnything, GGUF)
+data/raw/             # scraped source "motion" media
+data/frames/          # extracted frames
+data/annotations/     # weak + reviewed labels
+data/datasets/        # packaged fine-tuning datasets
+outputs/              # rendered videos, manifests, intermediates
+runs/                 # training logs (wandb/tensorboard)
+third_party/          # cloned upstreams (sam3, locate-anything.cpp)
+
+# Keep the folder skeleton in git via .gitkeep, ignore the contents.
+!**/.gitkeep
+
+# OS
+.DS_Store

@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "created_utc": "2026-07-18T04:24:46.140104+00:00",
+  "device": "cpu",
+  "fps": 30,
+  "size": [
+    384,
+    384
+  ],
+  "objects": [
+    {
+      "image": "examples/a.png",
+      "prompt": "a red apple",
+      "mask": null
+    },
+    {
+      "image": "examples/b.png",
+      "prompt": "a green pear",
+      "mask": null
+    }
+  ],
+  "detections": [
+    {
+      "object_index": 0,
+      "source": "grabcut",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": "a red apple",
+      "mask_path": null
+    },
+    {
+      "object_index": 1,
+      "source": "grabcut",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": "a green pear",
+      "mask_path": null
+    }
+  ],
+  "segments": [
+    {
+      "from_index": 0,
+      "to_index": 1,
+      "backend": "classical",
+      "n_frames": 30,
+      "easing": "ease_in_out",
+      "start_frame": 0,
+      "frames_dir": null
+    }
+  ],
+  "output_video": "outputs/example_merge.mp4",
+  "total_frames": 30,
+  "notes": [
+    "morph backend policy: auto"
+  ]
+}

@@ -1,0 +1,13 @@
+# Fine-tune SAM 3. Run on the GPU box: motion finetune sam3 --config <this>
+annotations_json: data/annotations/annotations.json
+dataset_dir: data/datasets/sam3
+output_dir: checkpoints/sam3-ft
+build_dataset: true
+
+# ⚠️ REQUIRED: paste the exact training command from sam3/README_TRAIN.md.
+# Placeholders {dataset}, {output_dir}, {config} are substituted. Example shape:
+# train_command: "python third_party/sam3/training/train.py --config {config} --data {dataset} --output {output_dir}"
+train_command: null
+train_config: null
+
+extra_env: {}

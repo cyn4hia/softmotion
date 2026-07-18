@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "created_utc": "2026-07-18T03:16:47.746728+00:00",
+  "device": "cpu",
+  "fps": 30,
+  "size": [
+    160,
+    160
+  ],
+  "objects": [
+    {
+      "image": "outputs/chain/a.png",
+      "prompt": null,
+      "mask": "outputs/chain/a_m.png"
+    },
+    {
+      "image": "outputs/chain/b.png",
+      "prompt": null,
+      "mask": "outputs/chain/b_m.png"
+    },
+    {
+      "image": "outputs/chain/c.png",
+      "prompt": null,
+      "mask": "outputs/chain/c_m.png"
+    }
+  ],
+  "detections": [
+    {
+      "object_index": 0,
+      "source": "user",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": null,
+      "mask_path": "outputs/chain/chain/mask_00.png"
+    },
+    {
+      "object_index": 1,
+      "source": "user",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": null,
+      "mask_path": "outputs/chain/chain/mask_01.png"
+    },
+    {
+      "object_index": 2,
+      "source": "user",
+      "box": null,
+      "center": null,
+      "score": 1.0,
+      "label": null,
+      "mask_path": "outputs/chain/chain/mask_02.png"
+    }
+  ],
+  "segments": [
+    {
+      "from_index": 0,
+      "to_index": 1,
+      "backend": "classical",
+      "n_frames": 8,
+      "easing": "ease_in_out",
+      "start_frame": 0,
+      "frames_dir": "outputs/chain/chain/seg_00"
+    },
+    {
+      "from_index": 1,
+      "to_index": 2,
+      "backend": "classical",
+      "n_frames": 7,
+      "easing": "ease_in_out",
+      "start_frame": 8,
+      "frames_dir": "outputs/chain/chain/seg_01"
+    }
+  ],
+  "output_video": "outputs/chain/chain.mp4",
+  "total_frames": 15,
+  "notes": [
+    "morph backend policy: classical"
+  ]
+}

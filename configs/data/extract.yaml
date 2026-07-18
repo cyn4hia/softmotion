@@ -1,0 +1,7 @@
+# Sample frames from scraped videos.
+input_dir: data/raw
+output_dir: data/frames
+fps: 2.0                # target samples/sec (uniform mode)
+scene_threshold: 0.0   # set >0 (e.g. 12.0) to switch to scene-change sampling
+max_frames_per_video: 300
+min_side: 384

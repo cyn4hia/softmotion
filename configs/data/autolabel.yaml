@@ -1,0 +1,11 @@
+# Weakly label frames with base SAM 3 + LocateAnything (best on the GPU box).
+frames_dir: data/frames
+out_dir: data/annotations
+prompts:                 # concept phrases to segment/localize in the motion media
+  - "the main object"
+  - "person"
+  - "face"
+device: ${MOTION_DEVICE:auto}
+sam3_score_threshold: 0.5
+localizer_prefer: null   # "cpp" | "pytorch" | null (auto)
+max_images: 0            # 0 = all
